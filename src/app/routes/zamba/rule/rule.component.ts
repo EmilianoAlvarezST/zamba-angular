@@ -1,8 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { Location } from '@angular/common';
 
 import { environment } from '../../../../environments/environment';
 import { SharedService } from '../../../services/zamba/shared.service';
@@ -18,7 +18,7 @@ import { ZambaService } from '../../../services/zamba/zamba.service';
         height: 100%;
       }
 
-      #main-spinner{
+      #main-spinner {
         position: fixed;
         top: 50%;
         left: 50%;

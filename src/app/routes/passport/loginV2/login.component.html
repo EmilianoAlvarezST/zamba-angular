@@ -1,15 +1,29 @@
 <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
   <nz-tabset [nzAnimated]="false" class="tabs">
     <nz-tab [nzTitle]="'app.login.tab-login-credentials' | i18n">
-      <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="'app.login.message-invalid-credentials' | i18n"
-        [nzShowIcon]="true" class="mb-lg" />
-      <nz-alert *ngIf="serverError" [nzType]="'error'" [nzMessage]="'app.server.error-message' | i18n"
-        [nzShowIcon]="true" class="mb-lg" />
-      <nz-alert *ngIf="authServerError" [nzType]="'error'" [nzMessage]="'app.server.error-auth-message' | i18n"
-        [nzShowIcon]="true" class="mb-lg" />
+      <nz-alert
+        *ngIf="error"
+        [nzType]="'error'"
+        [nzMessage]="'app.login.message-invalid-credentials' | i18n"
+        [nzShowIcon]="true"
+        class="mb-lg"
+      />
+      <nz-alert *ngIf="serverError" [nzType]="'error'" [nzMessage]="'app.server.error-message' | i18n" [nzShowIcon]="true" class="mb-lg" />
+      <nz-alert
+        *ngIf="authServerError"
+        [nzType]="'error'"
+        [nzMessage]="'app.server.error-auth-message' | i18n"
+        [nzShowIcon]="true"
+        class="mb-lg"
+      />
       <nz-form-item>
-        <nz-alert *ngIf="errorUserIsNotActive" [nzType]="'error'"
-          [nzMessage]="'app.server.error-user-isnot-active' | i18n" [nzShowIcon]="true" class="mb-lg" />
+        <nz-alert
+          *ngIf="errorUserIsNotActive"
+          [nzType]="'error'"
+          [nzMessage]="'app.server.error-user-isnot-active' | i18n"
+          [nzShowIcon]="true"
+          class="mb-lg"
+        />
         <nz-form-control [nzErrorTip]="mailErrorTip">
           <nz-input-group nzSize="large" nzPrefixIcon="mail">
             <input nz-input formControlName="email" placeholder="{{ 'app.register.form-email-placeholder' | i18n }}" />
@@ -24,8 +38,7 @@
       <nz-form-item>
         <nz-form-control [nzErrorTip]="passwordErrorTip">
           <nz-input-group nzSize="large" nzPrefixIcon="lock">
-            <input nz-input type="password" formControlName="password"
-              placeholder="{{ 'app.login.password' | i18n }}" />
+            <input nz-input type="password" formControlName="password" placeholder="{{ 'app.login.password' | i18n }}" />
           </nz-input-group>
           <ng-template #passwordErrorTip let-i>
             <ng-container *ngIf="i.errors.required">

@@ -1,11 +1,15 @@
 <gridster [options]="options">
-  <gridster-item [item]="item" *ngFor="let item of dashboard" [ngStyle]="
+  <gridster-item
+    [item]="item"
+    *ngFor="let item of dashboard"
+    [ngStyle]="
       item['type'] == 'calendar'
         ? { 'overflow-y': 'scroll' }
         : item['type'] == 'pending-tasks'
         ? { overflow: 'hidden' }
         : { overflow: 'auto' }
-    ">
+    "
+  >
     <widget-selector [widget]="item" [resizeEvent]="resizeEvent" [changeEvent]="changeEvent" [ngClass]="item['type']" />
   </gridster-item>
 </gridster>

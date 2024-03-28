@@ -28,5 +28,5 @@ jobs:
           server: w330212.ferozo.com
           username: w330212
           password: Stardoc2024
-          local-dir: ./dist
-          remote-dir: /public_html/ZambaDash
+          local-dir: ./dist/
+          server-dir: public_html/ZambaDash/
