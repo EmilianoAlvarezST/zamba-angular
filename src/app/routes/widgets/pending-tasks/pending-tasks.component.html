@@ -1,7 +1,6 @@
 <div class="title">
   <span nz-typography><strong>Tareas Pendientes</strong></span>
-  <nz-badge [nzCount]="data.length">
-  </nz-badge>
+  <nz-badge [nzCount]="data.length" />
 </div>
 <div class="item-container" [style.height.px]="divHeight">
   <nz-list nzItemLayout="horizontal" [nzLoading]="loading">
@@ -28,7 +27,7 @@
             <span nz-icon nzType="calendar" nzTheme="outline"></span>
           </div>
           <div class="flex-item">
-            <span class="text-color-grey">{{ item.Fecha | date:'dd/MM/yy' }}</span>
+            <span class="text-color-grey">{{ item.Fecha | date: 'dd/MM/yy' }}</span>
           </div>
         </div>
       </nz-list-item>

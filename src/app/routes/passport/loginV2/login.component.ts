@@ -20,7 +20,6 @@ import { catchError, finalize, throwError } from 'rxjs';
 })
 export class UserLoginV2Component implements OnDestroy, OnInit {
   constructor(
-
     private sanitizer: DomSanitizer,
 
     private fb: FormBuilder,
@@ -34,17 +33,17 @@ export class UserLoginV2Component implements OnDestroy, OnInit {
     private startupSrv: StartupService,
     private http: _HttpClient,
     private cdr: ChangeDetectorRef
-
   ) {
-    this.safeZambaUrl = "";
+    this.safeZambaUrl = '';
   }
   ngOnInit(): void {
     window.addEventListener('message', (event) => {
-      if (event.data === 'ok') {
+      if (event.data === 'login-rrhh-ok') {
         console.log('Ha devueto un Ok el sitio web de zamba');
         this.router.navigateByUrl("/");
-      } else {
+      } else if (event.data === 'login-rrhh-error') {
         this.authServerError = true;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -58,7 +57,7 @@ export class UserLoginV2Component implements OnDestroy, OnInit {
   });
   error = '';
   serverError = false;
-  authServerError = false
+  authServerError = false;
   type = 0;
   loading = false;
   errorUserIsNotActive = false;
@@ -69,7 +68,6 @@ export class UserLoginV2Component implements OnDestroy, OnInit {
   interval$: any;
 
   safeZambaUrl: SafeResourceUrl;
-
 
   submit(): void {
     this.error = '';
@@ -132,9 +130,11 @@ export class UserLoginV2Component implements OnDestroy, OnInit {
           }
           let tokenService = this.tokenService.get();
           console.log(tokenService);
-          let userid = tokenService ? tokenService["userid"] : null;
-          let token = tokenService ? tokenService["token"] : null;
-          this.safeZambaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment["apiWebViews"] + "/Security/LoginRRHH.aspx?" + "userid=" + userid + "&token=" + token);
+          let userid = tokenService ? tokenService['userid'] : null;
+          let token = tokenService ? tokenService['token'] : null;
+          this.safeZambaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `${environment['apiWebViews']}/Security/LoginRRHH.aspx?` + `userid=${userid}&token=${token}`
+          );
           this.cdr.detectChanges();
           //this.router.navigateByUrl(url);
         });

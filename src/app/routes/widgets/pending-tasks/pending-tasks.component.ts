@@ -54,7 +54,7 @@ export class PendingTasksComponent implements OnInit, OnDestroy {
     private pendingTasksService: PendingTasksService,
     private cdr: ChangeDetectorRef,
     private http: HttpClient
-  ) { }
+  ) {}
 
   ngOnDestroy(): void {
     this.destroy$.next(true);

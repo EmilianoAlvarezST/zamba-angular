@@ -25,7 +25,7 @@ export class WidgetsContainerComponent implements OnInit {
     private router: Router,
     private WCService: WidgetsContainerService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getWidgetsContainer();
